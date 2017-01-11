@@ -5,8 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;
       charset=ISO-8859-1">
-    <link rel="stylesheet"
-          href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular.min.js"></script>
 
@@ -30,9 +29,12 @@
         <div>
             <a class="btn btn-danger pull-left"
               data-ng-click="clearCart()"> <span class="glyphicon glyphicon-remove- sign"></span> Clear Cart
-            </a> <a href="#" class="btn btn-success pull-right"> <span
-                class="glyphicon-shopping-cart glyphicon"></span> Check out
-        </a>
+            </a>
+            <a href= "<spring:url value="/checkout?cartId=${cartId}"/>"
+               class="btn btn-success pull-right"><span class="glyphicon-shopping-cart glyphicon">
+              </span> Check out
+            </a>
+
         </div>
         <table class="table table-hover">
             <tr>
