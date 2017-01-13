@@ -25,8 +25,15 @@ public class CartItem implements Serializable{
         return product;
     }
 
+    /*
     public void setProduct(Product product) {
         this.product = product;
+        this.updateTotalPrice();
+    }
+     */
+    public void setProduct(Product product) {
+        this.product = product;
+        this.quantity = 1;
         this.updateTotalPrice();
     }
 

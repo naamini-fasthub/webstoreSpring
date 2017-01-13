@@ -7,6 +7,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import tz.co.fasthub.webstore.domain.Product;
 import tz.co.fasthub.webstore.exception.NoProductsFoundUnderCategoryException;
@@ -16,14 +17,14 @@ import tz.co.fasthub.webstore.service.ProductService;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
-
-import static com.hp.hpl.jena.sparql.vocabulary.TestManifestUpdate_11.request;
 
 @Controller
 @RequestMapping("/webstore/market")
 public class ProductController {
+
 
     @RequestMapping("/products")
     public String list(Model model) {
@@ -84,6 +85,17 @@ public class ProductController {
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
 
+        MultipartFile productImage = newProduct.getProductImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+
+        if (productImage!=null && !productImage.isEmpty()) {
+            try {
+                productImage.transferTo(new File(rootDirectory+"resources\\images"+
+                        newProduct.getProductId() + ".png"));
+            } catch (Exception e) {throw new RuntimeException("Product Image saving failed", e);
+            }
+        }
+
         productService.addProduct(newProduct);
         return "redirect:/webstore/market/products";
     }
@@ -98,7 +110,8 @@ public class ProductController {
                 "category",
                 "unitsInStock",
                 "condition",
-                "language");
+                "language",
+                "productImage");
     }
 
     @ExceptionHandler(ProductNotFoundException.class)

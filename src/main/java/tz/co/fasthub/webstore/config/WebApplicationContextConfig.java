@@ -88,7 +88,7 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
     @Bean
     public LocaleResolver localeResolver(){
         SessionLocaleResolver resolver = new SessionLocaleResolver();
-        resolver.setDefaultLocale(new Locale("nl"));
+        resolver.setDefaultLocale(new Locale("en"));
 
         return resolver;
     }
@@ -97,7 +97,7 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
     public HandlerInterceptor promoCodeInterceptor() {
         PromoCodeInterceptor promoCodeInterceptor = new PromoCodeInterceptor();
         promoCodeInterceptor.setPromoCode("OFF3R");
-        promoCodeInterceptor.setOfferRedirect("/localhost:8080/webstore/market/products");
+        promoCodeInterceptor.setOfferRedirect("/localhost:8082/webstore/market/products");
         promoCodeInterceptor.setErrorRedirect("invalidPromoCode");
 
         return promoCodeInterceptor;
@@ -105,8 +105,7 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
 
     @Bean(name = "validator")
     public LocalValidatorFactoryBean validator() {
-        LocalValidatorFactoryBean bean = new
-                LocalValidatorFactoryBean();
+        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource());
         return bean;
     }
@@ -114,5 +113,12 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
     @Override
     public Validator getValidator(){
         return validator();
+    }
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("utf-8");
+        return resolver;
     }
 }

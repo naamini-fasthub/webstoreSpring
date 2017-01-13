@@ -50,8 +50,6 @@
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.0" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:11.0-rc1" />
           <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:1.3.9" />
-          <element id="library" level="project" name="Maven: junit:junit:4.10" />
-          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-all:1.1" />
           <element id="library" level="project" name="Maven: org.mockito:mockito-all:1.9.0" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.2.4.Final" />
@@ -64,6 +62,9 @@
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-binding:2.4.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-js:2.4.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-js-resources:2.4.2.RELEASE" />
+          <element id="library" level="project" name="Maven: junit:junit:4.12" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:1.4.3.RELEASE" />
         </element>
       </element>
       <element id="directory" name="META-INF">

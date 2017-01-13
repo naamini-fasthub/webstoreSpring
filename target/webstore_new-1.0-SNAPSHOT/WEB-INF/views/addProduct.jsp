@@ -91,8 +91,18 @@
                     <form:radiobutton path="condition" value="Refurbished" /> Refurbished
                 </div>
             </div>
+<br>
+            <div class="form-group">
+                <label class="control-label col-lg-2" for="productImage">
+                    <spring:message code="addProduct.form.productImage.label"/>       </label>
+                <div class="col-lg-10">
+                    <form:input id="productImage" path="productImage"
 
-                <br>
+                                type="file" class="form:input-large" />
+                </div>
+            </div>
+
+            <br>
                 <div class="form-group">
                     <label class="control-label col-lg-2" for="unitsInStock"><spring:message code="addProduct.form.unitInStock.label"/></label>
                     <div class="col-lg-10">

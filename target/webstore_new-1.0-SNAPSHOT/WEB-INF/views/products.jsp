@@ -8,7 +8,7 @@
     <title>Products</title>
 </head>
 <body>
-<section>
+ <section>
     <div class="jumbotron">
         <div class="container">
             <h1>Products</h1>

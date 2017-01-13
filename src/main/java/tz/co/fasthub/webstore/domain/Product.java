@@ -46,7 +46,16 @@ public class Product {
     private boolean discontinued;
     private String condition;
 
-    /*@JsonIgnore
+    private MultipartFile productImage;
+
+    public MultipartFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
+    }
+/*@JsonIgnore
     private MultipartFile productPdfFile;
 
     @JsonIgnore
