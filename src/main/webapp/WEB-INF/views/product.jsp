@@ -36,14 +36,14 @@
             <p><strong>Availble units in stock </strong> : ${product.unitsInStock} </p>
             <h4> ${product.unitPrice} USD </h4>
             <p data-ng-controller="cartCtrl">
+                <a href="#" class="btn btn-warning btn-large"  data-ng-click="addToCart('${product.productId}')">
+                    <span class="glyphicon-shopping-cartglyphicon"></span> Order Now
+                </a>
 
                 <a href="<spring:url value="/cart" />" class="btn btn-default">
                      <span class="glyphicon-hand-right glyphicon"></span> View Cart
                 </a>
 
-                <a href="#" class="btn btn-warning btn-large"  data-ng-click="addToCart('${product.productId}')">
-                     <span class="glyphicon-shopping-cartglyphicon"></span> Order Now
-                </a>
             </p>
             <p>
                 <a href="<spring:url value="/webstore/market/products" />" class="btn btn-default">

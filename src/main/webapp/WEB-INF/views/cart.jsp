@@ -63,7 +63,7 @@
         </table>
 
         <a href="<spring:url value="/webstore/market/products" />" class="btn btn-default">
-                        <span class="glyphicon-hand-left glyphicon"></span> Continue shopping
+            <span class="glyphicon-hand-left glyphicon"></span> Continue shopping
         </a>
     </div>
 </section>

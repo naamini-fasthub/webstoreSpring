@@ -6,14 +6,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;  charset=ISO-8859-1">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <title>Products</title>
+    <title>Ona|Home</title>
 </head>
 <body>
 <section>
     <div class="jumbotron">
         <div class="container">
-            <h1>Welcome to Web Store!</h1>
-            <p>The one and only amazing web store</p>
+        <center>
+            <h1>ONA</h1>
+            <h1>Social Media Management Tool</h1>
+        </center>
         </div>
     </div>
 </section>

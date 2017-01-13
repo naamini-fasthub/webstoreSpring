@@ -14,4 +14,9 @@ public class HomeController {
 
     return "welcome";
   }
+
+  @RequestMapping("/onaPage")
+  public String startUpPage (Model model){
+    return "onaPage";
+  }
 }

@@ -6,8 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet"
-          href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css
-     /bootstrap.min.css">
+          href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <title>Invalid cart </title>
 </head>
 <body>
@@ -15,8 +14,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1 class="alert alert-danger">check out cancelled</h1>
-            <p>Your Check out process cancelled! you may
-                continue shopping..</p>
+            <p>Your Check out process cancelled! you may continue shopping..</p>
         </div>
     </div>
 </section>
@@ -24,10 +22,9 @@
 <section>
     <div class="container">
         <p>
-            <a href="<spring:url value="/market/products" />"
+            <a href="<spring:url value="/webstore/market/products" />"
                class="btn btn-primary">
-                     <span class="glyphicon-hand-left glyphicon">
-                     </span> products
+                     <span class="glyphicon-hand-left glyphicon"> </span> Back to Products
             </a>
         </p>
     </div>
