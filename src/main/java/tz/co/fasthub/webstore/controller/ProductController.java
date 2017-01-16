@@ -1,5 +1,6 @@
 package tz.co.fasthub.webstore.controller;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,12 @@ import tz.co.fasthub.webstore.exception.NoProductsFoundUnderCategoryException;
 import tz.co.fasthub.webstore.exception.ProductNotFoundException;
 import tz.co.fasthub.webstore.service.ProductService;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +28,9 @@ import java.util.Map;
 @RequestMapping("/webstore/market")
 public class ProductController {
 
+    Product product;
+
+    private ServletContext servletContext;
 
     @RequestMapping("/products")
     public String list(Model model) {
@@ -74,17 +80,37 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/products/add", method = RequestMethod.POST)
-    public String processAddNewProductForm(@ModelAttribute("newProduct") @Valid Product newProduct, BindingResult result,  HttpServletRequest request) {
+    public String processAddNewProductForm(@ModelAttribute("newProduct") @Valid Product newProduct,
+                                           BindingResult result, @RequestParam(value = "image", required = false) MultipartFile image) {
 
-        if(result.hasErrors()) {
-            return "addProduct";
-        }
 
         String[] suppressedFields = result.getSuppressedFields();
         if (suppressedFields.length > 0) {
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
 
+
+        if (!image.isEmpty()) {
+            try {
+                validateImage(image);
+
+            } catch (RuntimeException re) {
+                result.reject(re.getMessage());
+                return "redirect://webstore/market/products/add";
+            }
+
+            try {
+                saveImage(product.getProductImage() + ".png", image);
+            } catch (IOException e) {
+                result.reject(e.getMessage());
+                return "redirect:/webstore/market/products";
+            }
+        }else if(result.hasErrors()) {
+            return "addProduct";
+        }
+
+
+/*
         MultipartFile productImage = newProduct.getProductImage();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 
@@ -96,8 +122,29 @@ public class ProductController {
             }
         }
 
+ */
         productService.addProduct(newProduct);
         return "redirect:/webstore/market/products";
+    }
+
+    private void validateImage(MultipartFile image) {
+        if (!image.getContentType().equals("image/png")) {
+            throw new RuntimeException("Only PNG images are accepted");
+        }
+    }
+
+    private void saveImage(String filename, MultipartFile image)
+            throws RuntimeException, IOException {
+        try {
+            File file = new File(servletContext.getRealPath("/") + "/"
+                    + filename);
+
+            FileUtils.writeByteArrayToFile(file, image.getBytes());
+            System.out.println("Go to the location:  " + file.toString()
+                    + " on your computer and verify that the image has been stored.");
+        } catch (IOException e) {
+            throw e;
+        }
     }
 
     @InitBinder

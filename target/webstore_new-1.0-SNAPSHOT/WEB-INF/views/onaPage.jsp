@@ -37,6 +37,8 @@
                 </button>
                -->
 
+          <!-- <a href="<spring:url value="/login" />" class="fa fa-user" role="button">Link Button</a>
+            -->
             </div>
             <section>
                 <div class="pull-right" style="padding-right:50px">

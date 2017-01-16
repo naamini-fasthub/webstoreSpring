@@ -22,7 +22,7 @@
 <section class="container" data-ng-app="cartApp">
     <div class="row">
         <div class="col-md-5">
-            <img src="<c:url value="/webstore/img/${product.productId}.png"></c:url>" alt="image"  style = "width:100%"/>
+            <img src="<c:url value="/webstore/img/${product.productId}.png"></c:url>" class="img-responsive" alt="image"  style = "width:100%"/>
         </div>
         <div class="col-md-5">
             <h3>${product.name}</h3>
@@ -36,10 +36,16 @@
             <p><strong>Availble units in stock </strong> : ${product.unitsInStock} </p>
             <h4> ${product.unitPrice} USD </h4>
             <p data-ng-controller="cartCtrl">
-                <a href="#" class="btn btn-warning btn-large"  data-ng-click="addToCart('${product.productId}')">
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3>Order Now</h3>
+                Order Success in cart.
+            </div>
+               <!-- <a href="#" class="btn btn-warning btn-large"  data-ng-click="addToCart('${product.productId}')">
                     <span class="glyphicon-shopping-cartglyphicon"></span> Order Now
                 </a>
 
+               -->
                 <a href="<spring:url value="/cart" />" class="btn btn-default">
                      <span class="glyphicon-hand-right glyphicon"></span> View Cart
                 </a>
